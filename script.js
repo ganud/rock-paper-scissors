@@ -19,3 +19,37 @@ function getComputerChoice() {
         return("scissors")
     }
 }
+
+
+    // Evaluate each winning case based on perspective
+function playRound(playerSelection, computerSelection) {
+    // sterilize inputs 
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+    switch (true) {
+        // Computer wins
+        case computerSelection == "rock" && playerSelection == 'scissors':
+        case computerSelection == "paper" && playerSelection == 'rock':
+        case computerSelection == "scissors" && playerSelection == 'paper':
+            return(`You lose, ${computerSelection} beats ${playerSelection}.`)
+            break;
+        // Player wins
+        case playerSelection == "scissors" && computerSelection == 'paper':
+        case playerSelection == "paper" && computerSelection == 'rock':
+        case playerSelection == "rock" && computerSelection == 'scissors':
+            return("You win!")
+            break;
+        case playerSelection == computerSelection:
+            return('Tie')
+            break;
+        default:
+            return("Please enter a valid input")
+            break;
+    }
+}
+
+function game() {
+    for(var word = ''; word.length < 5; word += 'a'){
+        console.log(word)
+    }
+}
