@@ -9,15 +9,26 @@ function getComputerChoice() {
     // Get a number from a choice of 3
     let choice = getRandomInt(3);
     // Map random number to a choice using if statements
-    if (choice == 0) {
-        return("rock")
+    switch (choice) {
+        case 0:
+            return("rock")
+            break;
+        case 1:
+            return("paper")
+            break;
+        case 2:
+            return("scissors")
+            break;
     }
-    else if (choice == 1) {
-        return("paper")
-    }
-    else if (choice == 2) {
-        return("scissors")
-    }
+    // if (choice == 0) {
+    //     return("rock")
+    // }
+    // else if (choice == 1) {
+    //     return("paper")
+    // }
+    // else if (choice == 2) {
+    //     return("scissors")
+    // }
 }
 
 
@@ -39,6 +50,7 @@ function playRound(playerSelection, computerSelection) {
         case playerSelection == "rock" && computerSelection == 'scissors':
             return("You win!")
             break;
+        // Tie Case
         case playerSelection == computerSelection:
             return('Tie')
             break;
@@ -50,6 +62,8 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     let wins = 0;
+
+    // Count wins over 5 games
     for(var word = ''; word.length < 5; word += 'a') {
         let input = prompt("Your choice")
         let result = playRound(input, getComputerChoice())
@@ -57,7 +71,8 @@ function game() {
             wins++;
         }
     }
-    console.log(wins)
+
+    // Evaluate if majority games won(hardcoded for 5)
     if (wins > 2) {
         return("You won the 5 rounds!")
     }
