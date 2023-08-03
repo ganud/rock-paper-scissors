@@ -7,7 +7,7 @@ function getRandomInt(max) {
 // Get random choice from RNG
 function getComputerChoice() {
     // Get a number from a choice of 3
-    choice = getRandomInt(3);
+    let choice = getRandomInt(3);
     // Map random number to a choice using if statements
     if (choice == 0) {
         return("rock")
@@ -49,7 +49,19 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    for(var word = ''; word.length < 5; word += 'a'){
-        console.log(word)
+    let wins = 0;
+    for(var word = ''; word.length < 5; word += 'a') {
+        let input = prompt("Your choice")
+        let result = playRound(input, getComputerChoice())
+        if (result == "You win!") {
+            wins++;
+        }
+    }
+    console.log(wins)
+    if (wins > 2) {
+        return("You won the 5 rounds!")
+    }
+    else {
+        return("You lost the 5 rounds...")
     }
 }
