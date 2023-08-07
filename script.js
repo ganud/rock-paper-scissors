@@ -46,21 +46,43 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function update_scores(result) {
+    if(result == "You win!") {
+        player_wins++;
+        player_score.textContent = "You: " + player_wins;
+    }
+    else if(result.includes("You lose")) {
+        computer_wins++;
+        computer_score.textContent = "Computer: " + computer_wins;
+    }
 
+    if(player_wins == 5) {
+        verdict.textContent = "You won the match!";
+    }
+    else if (computer_wins == 5) {
+        verdict.textContent = "You lost the match!";
+    }
+}
 // Initialize player_wins and computer_wins variable
 // Add event listener to all buttons
-// Increment the side that wins when returned the corresponding vallue
-// If one variable reaches 5 declare that the winner
+// Check if outcome win or loss
+    //Then update variables accordingly
+// Check if either side has 5 wins
+    //Then declare winner
 let player_wins = 0;
 let computer_wins = 0;
-let outcome = document.querySelector('div')
+let outcome = document.getElementById('outcome');
 let choices = document.querySelectorAll("button");
+let player_score = document.getElementById('playerscore');
+let computer_score = document.getElementById('computerscore')
+let verdict = document.querySelector('p');
 
 choices.forEach((choice) => {
     choice.addEventListener("click", function () {
-        let userChoice = choice.textContent.toLowerCase();
-        userChoice = String(userChoice);
-        result = playRound(userChoice, getComputerChoice())
+        let userChoice = String(choice.textContent.toLowerCase());
+        result = playRound(userChoice, getComputerChoice());
         outcome.textContent = result;
+        // Update score display
+        update_scores(result)
     })
 } );
