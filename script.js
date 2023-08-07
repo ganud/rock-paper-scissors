@@ -3,12 +3,11 @@ function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
 
-
 // Get random choice from RNG
 function getComputerChoice() {
     // Get a number from a choice of 3
     let choice = getRandomInt(3);
-    // Map random number to a choice using if statements
+    // Map random number to a choice
     switch (choice) {
         case 0:
             return("rock")
@@ -20,23 +19,10 @@ function getComputerChoice() {
             return("scissors")
             break;
     }
-    // if (choice == 0) {
-    //     return("rock")
-    // }
-    // else if (choice == 1) {
-    //     return("paper")
-    // }
-    // else if (choice == 2) {
-    //     return("scissors")
-    // }
 }
-
 
     // Evaluate each winning case based on perspective
 function playRound(playerSelection, computerSelection) {
-    // sterilize inputs 
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
     switch (true) {
         // Computer wins
         case computerSelection == "rock" && playerSelection == 'scissors':
@@ -60,23 +46,21 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let wins = 0;
 
-    // Count wins over 5 games
-    for(var word = ''; word.length < 5; word += 'a') {
-        let input = prompt("Your choice")
-        let result = playRound(input, getComputerChoice())
-        if (result == "You win!") {
-            wins++;
-        }
-    }
+// Initialize player_wins and computer_wins variable
+// Add event listener to all buttons
+// Increment the side that wins when returned the corresponding vallue
+// If one variable reaches 5 declare that the winner
+let player_wins = 0;
+let computer_wins = 0;
+let outcome = document.querySelector('div')
+let choices = document.querySelectorAll("button");
 
-    // Evaluate if majority games won(hardcoded for 5)
-    if (wins > 2) {
-        return("You won the 5 rounds!")
-    }
-    else {
-        return("You lost the 5 rounds...")
-    }
-}
+choices.forEach((choice) => {
+    choice.addEventListener("click", function () {
+        let userChoice = choice.textContent.toLowerCase();
+        userChoice = String(userChoice);
+        result = playRound(userChoice, getComputerChoice())
+        outcome.textContent = result;
+    })
+} );
