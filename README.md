@@ -1,5 +1,6 @@
-A rock-paper-scissors simulator in javascript. Give it a go in console!
+A rock-paper-scissors simulator in javascript. 
 
-Use playRound() to simulate a round
-
-Use game() to simulate a best-of-5 game.
+Pending features:
+- Reset game button
+- Disable buttons upon a victory or loss
+- Additional CSS
