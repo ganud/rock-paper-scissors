@@ -63,6 +63,7 @@ function resetGame() {
     playerWins = 0;
     displayText.innerHTML = "Choose.";
     scoreboard.innerHTML = "0-0";
+    // Add back the onclicks that may be removed by lockGame
     document.getElementsByClassName('rock')[0].setAttribute('onclick', 'playRock()');
     document.getElementsByClassName('scissors')[0].setAttribute('onclick', 'playScissors()');
     document.getElementsByClassName('paper')[0].setAttribute('onclick', 'playPaper()');
@@ -99,6 +100,7 @@ function playScissors() {
 }
 
 function lockGame() {
+    // Remove onclick to prevent further user input
     document.getElementsByClassName('rock')[0].onclick = "";
     document.getElementsByClassName('scissors')[0].onclick = "";
     document.getElementsByClassName('paper')[0].onclick = "";
