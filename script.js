@@ -80,13 +80,13 @@ function updateScoreBoard() {
     // Check for a winner
     if(roundCount == 5) {
         if (playerWins > computerWins) {
-            displayText.innerHTML = "You won the game!";
+            displayText.innerHTML = "You proved your superiority over the fumo.";
         }
         else if (playerWins < computerWins) {
-            displayText.innerHTML = "You lost the game!";
+            displayText.innerHTML = "You were bested by a fumo, how unfortunate.";
         }
         else {
-            displayText.innerHTML = "You tied the game.";
+            displayText.innerHTML = "You intellect is on par with the fumo.";
         }
         lockGame();
     }
@@ -144,5 +144,3 @@ function updateChoiceDisplay(player1choice, player2choice) {
             player2choiceImage.src = scissorsImage;
     }
 }
-// What if we turned RPS into fumos
-// Choices include cirno tewi and reisen lmao
