@@ -56,6 +56,11 @@ let computerWins = 0;
 let playerWins = 0;
 let displayText = document.getElementsByClassName('display')[0];
 let scoreboard = document.getElementsByClassName('scoreboard')[0];
+// Image links
+const rockImage = "https://i.imgur.com/ImuMQw8.png";
+const paperImage = "https://cdn-icons-png.flaticon.com/128/9396/9396667.png";
+const scissorsImage = "https://cdn-icons-png.flaticon.com/128/639/639219.png";
+
 
 function resetGame() {
     roundCount = 0;
@@ -77,25 +82,34 @@ function updateScoreBoard() {
         if (playerWins > computerWins) {
             displayText.innerHTML = "You won the game!";
         }
-        else {
+        else if (playerWins < computerWins) {
             displayText.innerHTML = "You lost the game!";
+        }
+        else {
+            displayText.innerHTML = "You tied the game.";
         }
         lockGame();
     }
 }
 
 function playRock() {
-    displayText.innerHTML = playRound("rock", getComputerChoice());
+    let computerChoice = getComputerChoice();
+    updateChoiceDisplay('rock', computerChoice);
+    displayText.innerHTML = playRound("rock", computerChoice);
     updateScoreBoard();
 }
 
 function playPaper() {
-    displayText.innerHTML = playRound("paper", getComputerChoice());
+    let computerChoice = getComputerChoice();
+    updateChoiceDisplay('paper', computerChoice);
+    displayText.innerHTML = playRound("paper", computerChoice);
     updateScoreBoard();
 }
 
 function playScissors() {
-    displayText.innerHTML = playRound("scissors", getComputerChoice());
+    let computerChoice = getComputerChoice();
+    updateChoiceDisplay('scissors', computerChoice);
+    displayText.innerHTML = playRound("scissors", computerChoice);
     updateScoreBoard();
 }
 
@@ -104,6 +118,31 @@ function lockGame() {
     document.getElementsByClassName('rock')[0].onclick = "";
     document.getElementsByClassName('scissors')[0].onclick = "";
     document.getElementsByClassName('paper')[0].onclick = "";
+}
+
+function updateChoiceDisplay(player1choice, player2choice) {
+    player1choiceImage = document.getElementById("choice-player1");
+    player2choiceImage = document.getElementById("choice-player2");
+    switch (player1choice) {
+        case 'rock':
+            player1choiceImage.src = rockImage;
+            break;
+        case 'paper':
+            player1choiceImage.src = paperImage;
+            break;
+        case 'scissors':
+            player1choiceImage.src = scissorsImage;
+    }
+    switch (player2choice) {
+        case 'rock':
+            player2choiceImage.src = rockImage;
+            break;
+        case 'paper':
+            player2choiceImage.src = paperImage;
+            break;
+        case 'scissors':
+            player2choiceImage.src = scissorsImage;
+    }
 }
 // What if we turned RPS into fumos
 // Choices include cirno tewi and reisen lmao
